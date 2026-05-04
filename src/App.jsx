@@ -14,6 +14,7 @@ import Footer from './components/Footer.jsx';
 import Preloader from './components/Preloader.jsx';
 import PageTransition from './components/PageTransition.jsx';
 import ProjectDetails from './components/ProjectDetails.jsx';
+import { Analytics } from '@vercel/analytics/react';
 
 function StickyEmail() {
   return (
@@ -105,6 +106,7 @@ export default function App() {
     <BrowserRouter>
       {showPreloader && <Preloader onDone={() => setShowPreloader(false)} />}
       <Shell />
+      <Analytics />
     </BrowserRouter>
   );
 }
