@@ -1,0 +1,15 @@
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#3F7D3A">
+    <ellipse cx="20" cy="6" rx="3.4" ry="6.4"></ellipse>
+    <ellipse cx="20" cy="34" rx="3.4" ry="6.4"></ellipse>
+    <ellipse cx="6" cy="20" rx="6.4" ry="3.4"></ellipse>
+    <ellipse cx="34" cy="20" rx="6.4" ry="3.4"></ellipse>
+    <g transform="rotate(45 20 20)">
+      <ellipse cx="20" cy="6" rx="2.8" ry="5.4"></ellipse>
+      <ellipse cx="20" cy="34" rx="2.8" ry="5.4"></ellipse>
+      <ellipse cx="6" cy="20" rx="5.4" ry="2.8"></ellipse>
+      <ellipse cx="34" cy="20" rx="5.4" ry="2.8"></ellipse>
+    </g>
+    <circle cx="20" cy="20" r="3.2" fill="#6FA34A"></circle>
+  </g>
+</svg>
