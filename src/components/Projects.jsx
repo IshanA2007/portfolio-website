@@ -7,12 +7,45 @@ export default function Projects() {
   const [hovered, setHovered] = useState(null);
   const previewRef = useRef(null);
   const containerRef = useRef(null);
-  const followRef = useRef({ targetY: 0, currentY: 0, raf: 0 });
+  const followRef = useRef({ targetY: 0, currentY: 0, raf: 0, clientY: null });
+
+  const pickHoveredFromCursor = () => {
+    if (window.innerWidth < 768) return;
+    const y = followRef.current.clientY;
+    if (y == null || !containerRef.current) return;
+    const cRect = containerRef.current.getBoundingClientRect();
+    if (y < cRect.top || y > cRect.bottom) {
+      setHovered((h) => (h === null ? h : null));
+      return;
+    }
+    const rows = containerRef.current.querySelectorAll('.project-row');
+    let foundIdx = null;
+    for (let i = 0; i < rows.length; i++) {
+      const r = rows[i].getBoundingClientRect();
+      if (y >= r.top && y <= r.bottom) { foundIdx = i; break; }
+    }
+    setHovered((h) => (h === foundIdx ? h : foundIdx));
+  };
+
+  useEffect(() => {
+    const onScroll = () => pickHoveredFromCursor();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const recomputeTarget = () => {
+    if (!containerRef.current || !previewRef.current) return;
+    if (followRef.current.clientY == null) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const previewH = previewRef.current.offsetHeight || 360;
+    followRef.current.targetY = (followRef.current.clientY - rect.top) - previewH / 2;
+  };
 
   useEffect(() => {
     const tick = () => {
       const s = followRef.current;
-      s.currentY += (s.targetY - s.currentY) * 0.08;
+      recomputeTarget();
+      s.currentY += (s.targetY - s.currentY) * 0.18;
       if (previewRef.current) {
         previewRef.current.style.transform = `translateY(${s.currentY}px)`;
       }
@@ -23,11 +56,9 @@ export default function Projects() {
   }, []);
 
   const onMove = (e) => {
-    if (!containerRef.current || !previewRef.current) return;
     if (window.innerWidth < 768) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const previewH = previewRef.current.offsetHeight || 360;
-    followRef.current.targetY = (e.clientY - rect.top) - previewH / 2;
+    followRef.current.clientY = e.clientY;
+    recomputeTarget();
   };
 
   useEffect(() => {
@@ -46,7 +77,7 @@ export default function Projects() {
 
         <div
           ref={containerRef}
-          className="project-list"
+          className={'project-list' + (hovered !== null ? ' is-tracking' : '')}
           style={{ position: 'relative' }}
           onMouseMove={onMove}
           onMouseLeave={() => setHovered(null)}
@@ -62,10 +93,14 @@ export default function Projects() {
             <TransitionLink
               key={p.slug}
               to={`/projects/${p.slug}`}
-              className="project-row reveal"
+              className={'project-row reveal' + (hovered === i ? ' is-row-hover' : '')}
               data-reveal-delay={i * 50}
               data-sweep={i % 2 === 0 ? 'ltr' : 'rtl'}
               onMouseEnter={() => setHovered(i)}
+              onMouseMove={(e) => {
+                followRef.current.clientY = e.clientY;
+                setHovered((h) => (h === i ? h : i));
+              }}
             >
               <span className="num">_{String(i + 1).padStart(2, '0')}.</span>
               <div className="row-body">

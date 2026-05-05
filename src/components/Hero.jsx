@@ -30,7 +30,7 @@ export default function Hero() {
               <span className="accent">{role.lead}</span>
             </span>
             <br />
-            <span className={`role-line role-bottom role-${phase}`} key={`b-${idx}`} style={{ marginLeft: 24, display: 'inline-block', animationDelay: '40ms' }}>
+            <span className={`role-line role-bottom role-${phase}`} key={`b-${idx}`} style={{ display: 'inline-block', animationDelay: '40ms' }}>
               {role.tail}
             </span>
           </h1>

@@ -132,6 +132,11 @@ export default function Experiences() {
                   <div className="company">{item.company}</div>
                   <div className="title">{item.title}</div>
                   <div className="duration">{item.duration}</div>
+                  <ul className="exp-row-bullets">
+                    {item.bullets.map((b, j) => (
+                      <li key={j}>{b}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}

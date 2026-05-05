@@ -8,15 +8,15 @@ export default function AboutMe() {
 
         <span className="eyebrow reveal" data-reveal-delay="60">_01.&nbsp; About me</span>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: 32 }}>
-          <p className="reveal" data-reveal-delay="120" style={{ fontSize: 36, fontFamily: 'var(--font-body)', fontWeight: 300, margin: 0, lineHeight: 1.1 }}>
+        <div className="about-grid">
+          <p className="reveal about-greeting" data-reveal-delay="120">
             Hi, I'm Ishan.
           </p>
-          <div style={{ maxWidth: 480, color: 'var(--fg-soft)', fontSize: 17, lineHeight: 1.6 }}>
-            <p className="reveal" data-reveal-delay="180" style={{ margin: 0 }}>
+          <div className="about-copy">
+            <p className="reveal about-copy-p" data-reveal-delay="180">
               I study computer science at UVA. I started messing around with code in middle school and basically never stopped. Most of my projects come from random ideas I want to try out for myself.
             </p>
-            <p className="reveal" data-reveal-delay="240" style={{ marginTop: 14, marginBottom: 0 }}>
+            <p className="reveal about-copy-p about-copy-p--gap" data-reveal-delay="240">
               These days I spend most of my time on web stuff and a bit of machine learning on the side. I like making things that I'd actually want to use, and that other people can pick up without thinking too hard about it.
             </p>
           </div>
