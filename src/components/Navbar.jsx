@@ -10,7 +10,7 @@ export default function Navbar({ onNav }) {
   ];
   const socials = [
     { name: 'github', url: 'https://github.com/IshanA2007' },
-    { name: 'linkedin', url: '#' },
+    { name: 'linkedin', url: 'https://www.linkedin.com/in/ishan-ajwani' },
     { name: 'email', url: 'mailto:ishan.ajwani.7@gmail.com' },
   ];
   return (
