@@ -3,9 +3,29 @@ import SectionTitle from './SectionTitle.jsx';
 
 const EXPERIENCES = [
   {
+    title: 'AI/Platforms Intern',
+    company: 'Union Pacific Railroad',
+    duration: 'May 2026 to now',
+    bullets: [
+      'Built an API validator agent that enforces API governance and helps human reviewers across 1900 services.',
+      'Built the agentic eval pipeline in Python and Snowflake with deterministic and semantic linters, taking review from days down to about 30 seconds.',
+      'Worked with the AI engineering, platform, architecture, and governance teams on a dual-agent governance model that pairs deterministic validation with AI-assisted review, now heading into production testing against thousands of existing APIs.',
+    ],
+  },
+  {
+    title: 'Claude Campus Ambassador',
+    company: 'Anthropic',
+    duration: 'Jan 2026 to Jun 2026',
+    bullets: [
+      'Selected for Anthropic’s ambassador program to lead developer education and agentic AI adoption across UVA’s 25K+ students.',
+      'Taught agentic development end-to-end in hands-on workshops: Claude Code, MCP servers, tool use, subagents, and agent evals, taking students from first prompt to working agents.',
+      'Piloted new Claude capabilities ahead of general release and sent structured student-developer feedback back to Anthropic.',
+    ],
+  },
+  {
     title: 'App Developer Intern',
     company: 'Sorcea',
-    duration: 'Jan 2026 to now',
+    duration: 'Jan 2026 to May 2026',
     bullets: [
       'Building the product comparison feature, one of the five main pages in the app, and shipping it as a real release on the App Store.',
       'Wrote the comparison UI as a set of reusable Flutter components so similar pages after it took about 40% less time to put together.',
